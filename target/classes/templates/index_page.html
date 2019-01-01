@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>留言板</title>
+    <link rel="stylesheet" type="text/css" th:href="@{main.css}"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div class="main">
+    <div class="banner">
+        <header>新年留言板</header>
+        <div class="title">超级简单的留言板系统</div>
+    </div>
+    <nav class="navbar">
+        <ul>
+            <a href="/"><li>首页</li></a>
+            <a href="/form"><li>留言</li></a>
+        </ul>
+    </nav>
+
+
+    <div th:each="message : ${messages}">
+        <div class="con">
+            <div class="con-block">
+                <div class="block-title">
+                    <a th:text="${message.title}">title</a>
+                </div>
+                <div class="block-con">
+                    <p th:text="${message.message}">message</p>
+                </div>
+                <div class="block-author">
+                    <p th:text="${message.name}">name</p>
+                    <p th:text="${#dates.format(message.date, 'yyyy/MM/dd HH:mm')}">date</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

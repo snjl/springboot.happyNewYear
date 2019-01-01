@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>留言板-发布</title>
+    <link rel="stylesheet" type="text/css" th:href="@{main.css}"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div class="main">
+    <div class="banner">
+        <header>留言板</header>
+        <div class="title">新年留言</div>
+    </div>
+    <nav class="navbar">
+        <ul>
+            <a href="/"><li>首页</li></a>
+            <a href="/form"><li>留言</li></a>
+        </ul>
+    </nav>
+    <div class="con">
+        <form action="/insert" method="post">
+            <p>
+                标题：<input type="text" name="title" />
+            </p>
+            <p>
+                姓名：<input type="text" name="name" />
+            </p>
+            <p>
+                邮箱：<input type="text" name="email" />
+            </p>
+            <p>
+                内容：<textarea rows="" cols="" name="message"></textarea>
+            </p>
+            <input type="submit" class="submit" value="发布留言"/>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
