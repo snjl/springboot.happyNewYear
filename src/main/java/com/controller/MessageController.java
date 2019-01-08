@@ -35,7 +35,7 @@ public class MessageController {
 
 
     @RequestMapping(value = "insert", method = RequestMethod.POST)
-    public ModelAndView insert(@RequestParam Map<String, Object> map) {
+    public String insert(@RequestParam Map<String, Object> map) {
         MessageWithBLOBs message = new MessageWithBLOBs();
         message.setTitle((String)map.get("title"));
         message.setName((String)map.get("name"));
@@ -43,10 +43,13 @@ public class MessageController {
         message.setDate(new Date());
         message.setEmail((String)map.get("email"));
         messageMapper.insert(message);
-        ModelAndView modelAndView = new ModelAndView("index_page");
-        List<MessageWithBLOBs> messages = messageMapper.selectByExampleWithBLOBs(null);
-        modelAndView.addObject("messages", messages);
+        return "redirect:/ ";
+    }
 
-        return modelAndView;
+
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable Integer id) {
+        messageMapper.deleteByPrimaryKey(id);
+        return "redirect:/ ";
     }
 }
